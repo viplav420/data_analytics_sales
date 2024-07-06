@@ -9,7 +9,7 @@ This project analyzes retail order data to generate insights such as the top rev
 - [Project Structure](#project-structure)
 - [Data Source](#data-source)
 - [Features](#features)
-- 
+  
 ## Installation
 
 ### Prerequisites
