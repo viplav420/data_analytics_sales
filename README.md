@@ -6,9 +6,7 @@ This project analyzes retail order data to generate insights such as the top rev
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Data Source](#data-source)
-- [Problem Statements](#Problem Statements)
+- [Problem Statements](#Problem-Statements)
   
 ## Installation
 
@@ -38,11 +36,10 @@ conda install --yes --file requirements.txt
   kaggle datasets download ankitbansal06/retail-orders -f orders.csv#!pip install kaggle
 
 2. **Extract the CSV file from the zip file**
-   # Extract file from zip file
-import zipfile
-zip_ref = zipfile.ZipFile('orders.csv.zip') 
-zip_ref.extractall() # Extract file to dir
-zip_ref.close() # Close file
+  import zipfile
+  zip_ref = zipfile.ZipFile('orders.csv.zip') 
+  zip_ref.extractall() # Extract file to dir
+  zip_ref.close() # Close file
 
 3. **Read data from the file and handle null values:**
   import pandas as pd
