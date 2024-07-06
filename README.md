@@ -19,54 +19,67 @@ This project analyzes retail order data to generate insights such as the top rev
 
 1. **Clone the repository:**
    git clone https://github.com/yourusername/retail-orders-analysis.git
+   
    cd retail-orders-analysis
    
-2. **Install the required libraries:**
+3. **Install the required libraries:**
 conda install --yes --file requirements.txt
 
-3. **Set up Kaggle API:**
+4. **Set up Kaggle API:**
 
-4. **Run the script:**
+5. **Run the script:**
 
 ### Usage   
 
 1. **Donwload the dataset from kaggle**
   import kaggle
+
   Download dataset
+  
   kaggle datasets download ankitbansal06/retail-orders -f orders.csv#!pip install kaggle
 
-2. **Extract the CSV file from the zip file**
+3. **Extract the CSV file from the zip file**
   import zipfile
+
   zip_ref = zipfile.ZipFile('orders.csv.zip') 
+  
   zip_ref.extractall() # Extract file to dir
+  
   zip_ref.close() # Close file
 
-3. **Read data from the file and handle null values:**
+5. **Read data from the file and handle null values:**
   import pandas as pd
+
   df = pd.read_csv('orders.csv', na_values=['Not Available', 'unknown'])
+  
   df['Ship Mode'].unique()
 
-4. **Rename columns (make them lowercase and replace spaces with underscores):**
+7. **Rename columns (make them lowercase and replace spaces with underscores):**
   df.columns = df.columns.str.lower()
+
   df.columns = df.columns.str.replace(' ', '_')
 
-5. **Derive new columns for discount, sale price, and profit:**
+9. **Derive new columns for discount, sale price, and profit:**
   df['discount'] = df['list_price'] * df['discount_percent'] * .01
+
   df['sale_price'] = df['list_price'] - df['discount']
+  
   df['profit'] = df['sale_price'] - df['cost_price']
 
-6. **Convert order date from object data type to datetime:**
+11. **Convert order date from object data type to datetime:**
   df['order_date'] = pd.to_datetime(df['order_date'], format="%Y-%m-%d")
 
-7. **Drop unnecessary columns:**
+12. **Drop unnecessary columns:**
   df.drop(columns=['list_price', 'cost_price', 'discount_percent'], inplace=True)
 
-8. **Load the data into SQL Server:**
+13. **Load the data into SQL Server:**
   import sqlalchemy as sal
+
   engine = sal.create_engine(r'mssql+pyodbc://viplav\SQLEXPRESS/master?driver=ODBC+DRIVER+17+FOR+SQL+SERVER')
+  
   conn = engine.connect()
 
-9. **Append the data to SQL Server table:**
+15. **Append the data to SQL Server table:**
    df.to_sql('df_orders', con=conn, index=False, if_exists='append')
 
 ### Problem Statements
