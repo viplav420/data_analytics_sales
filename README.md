@@ -26,7 +26,7 @@ conda install --yes --file requirements.txt
 
 3. **Set up Kaggle API:**
 
-4. **Run the script:Run the script:**
+4. **Run the script:**
 
 ### Usage   
 
