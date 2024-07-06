@@ -7,6 +7,7 @@ order by sales desc
 
 
 
+	
 --find top 5 highest selling products in each region
 with cte as (
 select region,product_id,sum(sale_price) as sales
@@ -17,6 +18,8 @@ select *
 , row_number() over(partition by region order by sales desc) as rn
 from cte) A
 where rn<=5
+
+
 
 
 
@@ -53,7 +56,6 @@ row_number() over(partition by category order by sales desc) as rn
 from cte
 ) a
 where rn=1
-
 
 
 
